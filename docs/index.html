@@ -6,16 +6,68 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <!-- 主题 -->
+  <!-- 默认主题 -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"> -->
+
+  <!-- 主题 docsify-themeable Simple -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+
+  <!-- 文档浮动目录资源 https://github.com/jasperxu/docsify-jx-toc -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/fontawesome.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/solid.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-jx-toc/dist/jx-toc.css">
+  <style>
+    :root {
+      /* Reduce the font size */
+      /* --base-font-size: 14px; */
+
+      /* Change the theme color hue */
+      /* --theme-hue: 325; */
+
+      /* Change the sidebar bullets */
+      /* --sidebar-nav-link-before-content: ''; */
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: '',
-      repo: ''
+      name: '安全加固指南',
+      repo: 'pysense/baseline-docs',
+      homepage: 'home.md',
+      loadSidebar: true,
+      subMaxLevel: 2,
+      search: {
+        placeholder: '搜索',
+        noData: '找不到结果',
+        hideOtherSidebarContent: false
+      },
+      jxtoc: {
+          headings: "h1, h2, h3, h4, h5, h6",
+      },
+      copyCode: {
+        buttonText: "点击复制",
+        errorText: "复制出错",
+        successText: "已复制"
+      }
     }
   </script>
+  <!-- 全文搜索 - Search -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <!-- 外链脚本 - External Script -->
+  <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script> -->
+  <!-- 复制代码到剪贴板 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+  <!-- 点击图片缩放 - Zoom image -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!-- 文档浮动目录 https://github.com/jasperxu/docsify-jx-toc -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-jx-toc/dist/jx-toc.js"></script>
+  <!-- 分页 https://github.com/imyelo/docsify-pagination -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- 主题 docsify-themeable (latest v0.x.x) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 </body>
