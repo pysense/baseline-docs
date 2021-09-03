@@ -1,7 +1,5 @@
 # Linux 系统安全加固规范
 
-[TOC]
-
 ## 1. 账号安全
 
 提高账号安全的指导原则：
@@ -150,7 +148,7 @@ grep -Ei "^\s*PermitEmptyPasswords\s+yes" /etc/ssh/sshd_config
 grep -Ei "^\s*PermitRootLogin\s+[^y]+" /etc/ssh/sshd_config
 ```
 
-修复建议：修改配置文件 /etc/ssh/sshd_config，设置 PermitRootLogin prohibit-password 以禁用密码登录，但仍可通过密钥进行验证
+修复建议：修改配置文件 `/etc/ssh/sshd_config`，设置 `PermitRootLogin prohibit-password`（仅允许通过密钥进行验证）
 
 ## 6. 文件权限
 
