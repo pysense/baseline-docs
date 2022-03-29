@@ -32,7 +32,7 @@ awk -F: '$2==""' /etc/shadow
 判断依据：执行以下命令，如果输出不为空，则存在 UID 为 0 的非 root 账号
 
 ```bash
-awk -F: -v IGNORECASE=1 '$1!="root"&&$3==0' /etc/passwd
+awk -F: '$1!="root"&&$3==0' /etc/passwd
 ```
 
 修复建议：如果该账户不是自行创建的或者不是 root 重命名的，则应禁用该账号
@@ -157,7 +157,7 @@ grep -Ei "^\s*PermitRootLogin\s+[^y]+" /etc/ssh/sshd_config
 判断依据：执行以下命令，如果输出不为空，需要检查权限是否正确
 
 ```bash
-find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!="swap"{print$2}' /etc/fstab) -xdev -type f \( -perm -0002 -a ! -perm -1000 \)
+find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!~/swap|none|\/proc|\/dev/{print$2}' /etc/fstab) -xdev -type f \( -perm -0002 -a ! -perm -1000 \)
 ```
 
 修复建议：检查文件权限是否正常
@@ -167,7 +167,7 @@ find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!="swap"{print$2}' /etc/fstab) -xde
 判断依据：执行以下命令，如果输出不为空，需要检查权限是否正确
 
 ```bash
-find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!="swap"{print$2}' /etc/fstab) -xdev -type d \( -perm -0002 -a ! -perm -1000 \)
+find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!~/swap|none|\/proc|\/dev/{print$2}' /etc/fstab) -xdev -type d \( -perm -0002 -a ! -perm -1000 \)
 ```
 
 修复建议：检查目录权限是否正常
@@ -177,7 +177,7 @@ find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!="swap"{print$2}' /etc/fstab) -xde
 判断依据：执行以下命令，如果输出不为空，需要检查权限是否正确
 
 ```bash
-find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!="swap"{print$2}' /etc/fstab) -xdev -nouser -o -nogroup
+find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!~/swap|none|\/proc|\/dev/{print$2}' /etc/fstab) -xdev -nouser -o -nogroup
 ```
 
 修复建议：可能情况：
@@ -191,7 +191,7 @@ find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!="swap"{print$2}' /etc/fstab) -xde
 判断依据：执行以下命令，如果输出不为空，需要检查输出文件是否异常
 
 ```bash
-find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!="swap"{print$2}' /etc/fstab) -xdev -name ".. *" -o -name "...*"
+find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!~/swap|none|\/proc|\/dev/{print$2}' /etc/fstab) -xdev -name ".. *" -o -name "...*"
 ```
 
 修复建议：检查输出文件/目录是否异常
@@ -201,7 +201,7 @@ find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!="swap"{print$2}' /etc/fstab) -xde
 判断依据：执行以下命令，检查输出文件是否存在可疑文件
 
 ```bash
-find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!="swap"{print$2}' /etc/fstab) -xdev \( -perm -4000 -o -perm -2000 \)
+find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!~/swap|none|\/proc|\/dev/{print$2}' /etc/fstab) -xdev ! -path "/var/lib/docker/*" \( -perm -4000 -o -perm -2000 \)
 ```
 
 修复建议：检查输出文件/目录权限是否异常
