@@ -1,14 +1,12 @@
 # Baseline Docs
 
-https://github.com/pysense/baseline-check 配套文档
+这个项目是基线检查脚本 https://github.com/pysense/baseline-check 的配套文档。
 
 > Powered by [docsify](https://docsify.js.org/#/zh-cn/).
 
 ## 本地预览文档
 
-1）【可选】安装 docsify
-
-如果不需要创建及在本地预览生成的文档，则无需安装 docsify。
+1）安装 docsify（可选，如果不需要创建新的项目，则无需安装）
 
 ```
 npm i docsify-cli -g
@@ -16,12 +14,14 @@ npm i docsify-cli -g
 
 2）启动 HTTP 服务
 
-在本地启动 HTTP 服务实时预览，可使用任何 HTTP 服务或通过 docsify 启动 HTTP 服务（默认访问地址 http://localhost:3000）。
+如果已安装 docsify，可通过 docsify 启动 HTTP 服务，默认访问地址：http://localhost:3000
 
 ```
 cd baseline-docs
 docsify serve docs
 ```
+
+或者通过其他程序如 Caddy 启动 HTTP 服务也可以。
 
 ## TODO
 
