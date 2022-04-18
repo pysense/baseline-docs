@@ -1,0 +1,37 @@
+{
+    "created_time": "2021-08-23T07:26:19Z",
+    "files": [
+        {
+            "attachment_folder": "",
+            "created_time": "2021-08-23T07:26:19Z",
+            "id": "10",
+            "modified_time": "2021-08-23T07:26:19Z",
+            "name": ".gitignore",
+            "signature": "38699290465534",
+            "tags": [
+            ]
+        },
+        {
+            "attachment_folder": "",
+            "created_time": "2021-08-23T07:26:19Z",
+            "id": "11",
+            "modified_time": "2021-08-23T12:41:24Z",
+            "name": "README.md",
+            "signature": "20432794555646",
+            "tags": [
+            ]
+        }
+    ],
+    "folders": [
+        {
+            "name": "vx_recycle_bin"
+        },
+        {
+            "name": "docs"
+        }
+    ],
+    "id": "1",
+    "modified_time": "2021-08-23T07:26:19Z",
+    "signature": "138170733040894",
+    "version": 2
+}
