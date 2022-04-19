@@ -177,7 +177,7 @@ find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!~/swap|none|\/proc|\/dev/{print$2}
 判断依据：执行以下命令，如果输出不为空，需要检查权限是否正确
 
 ```bash
-find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!~/swap|none|\/proc|\/dev/{print$2}' /etc/fstab) -xdev -nouser -o -nogroup
+find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!~/swap|none|\/proc|\/dev/{print$2}' /etc/fstab) -xdev -path /var/lib/docker -prune -o \( -nouser -o -nogroup \) -print
 ```
 
 修复建议：可能情况：
@@ -201,7 +201,7 @@ find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!~/swap|none|\/proc|\/dev/{print$2}
 判断依据：执行以下命令，检查输出文件是否存在可疑文件
 
 ```bash
-find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!~/swap|none|\/proc|\/dev/{print$2}' /etc/fstab) -xdev ! -path "/var/lib/docker/*" \( -perm -4000 -o -perm -2000 \)
+find $(awk -v IGNORECASE=1 '$0~/^\s*[^#]/&&$2!~/swap|none|\/proc|\/dev/{print$2}' /etc/fstab) -xdev -path /var/lib/docker -prune -o \( -perm -u=s -o -perm -g=s \) -printf "%M %u %g %p\n"
 ```
 
 修复建议：检查输出文件/目录权限是否异常
